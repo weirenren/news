@@ -155,11 +155,9 @@ public class ShadowActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(View v) {
-        if (switchProxy.isChecked()) {
-            return;
-        }
 
-        if (v.getTag().toString().equals("ProxyUrl")){
+        int i = v.getId();
+        if (i == R.id.ProxyUrlLayout) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.config_url)
                     .setItems(new CharSequence[]{
@@ -179,10 +177,14 @@ public class ShadowActivity extends AppCompatActivity implements
                         }
                     })
                     .show();
-        } else if (v.getTag().toString().equals("AppSelect")){
+        }
+
+        if (i == R.id.AppSelectLayout) {
             System.out.println("abc");
             startActivity(new Intent(this, AppManager.class));
-        }else if (v.getId() == R.id.globalBtn) {
+        }
+
+        if (v.getId() == R.id.globalBtn) {
             ProxyConfig.Instance.globalMode = !ProxyConfig.Instance.globalMode;
             if (ProxyConfig.Instance.globalMode) {
                 onLogReceived("Proxy global mode is on");
@@ -410,6 +412,7 @@ public class ShadowActivity extends AppCompatActivity implements
 
             return true;
         }
+
 
         if (item.getItemId() == R.id.menu_item_toggle_global) {
             ProxyConfig.Instance.globalMode = !ProxyConfig.Instance.globalMode;
