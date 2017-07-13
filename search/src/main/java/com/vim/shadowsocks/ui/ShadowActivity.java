@@ -72,6 +72,13 @@ public class ShadowActivity extends AppCompatActivity implements
 
         scrollViewLog = (ScrollView) findViewById(R.id.scrollViewLog);
         textViewLog = (TextView) findViewById(R.id.textViewLog);
+        switchProxy = (Switch) findViewById(R.id.switchBtn);
+
+        switchProxy.setChecked(LocalVpnService.IsRunning);
+        switchProxy.setOnCheckedChangeListener(this);
+
+        findViewById(R.id.globalBtn).setOnClickListener(this);
+
         findViewById(R.id.ProxyUrlLayout).setOnClickListener(this);
         findViewById(R.id.AppSelectLayout).setOnClickListener(this);
 
@@ -175,7 +182,17 @@ public class ShadowActivity extends AppCompatActivity implements
         } else if (v.getTag().toString().equals("AppSelect")){
             System.out.println("abc");
             startActivity(new Intent(this, AppManager.class));
+        }else if (v.getId() == R.id.globalBtn) {
+            ProxyConfig.Instance.globalMode = !ProxyConfig.Instance.globalMode;
+            if (ProxyConfig.Instance.globalMode) {
+                onLogReceived("Proxy global mode is on");
+            } else {
+                onLogReceived("Proxy global mode is off");
+            }
         }
+
+
+
     }
 
     private void scanForProxyUrl() {
@@ -325,8 +342,7 @@ public class ShadowActivity extends AppCompatActivity implements
             return false;
         }
 
-        switchProxy.setChecked(LocalVpnService.IsRunning);
-        switchProxy.setOnCheckedChangeListener(this);
+
 
         return true;
     }
