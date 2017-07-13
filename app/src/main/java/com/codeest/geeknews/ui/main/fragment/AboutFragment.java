@@ -1,10 +1,13 @@
 package com.codeest.geeknews.ui.main.fragment;
 
+import android.content.Intent;
+
 import com.codeest.geeknews.R;
 import com.codeest.geeknews.app.Constants;
 import com.codeest.geeknews.base.SimpleFragment;
 import com.codeest.geeknews.util.AlipayUtil;
 import com.codeest.geeknews.util.SnackbarUtil;
+import com.vim.shadowsocks.ui.ShadowActivity;
 
 import butterknife.OnClick;
 
@@ -23,6 +26,17 @@ public class AboutFragment extends SimpleFragment {
     protected void initEventAndData() {
     }
 
+    @OnClick(R.id.writerText)
+    void launchShadow() {
+
+        Intent intent = new Intent(getActivity(), ShadowActivity.class);
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        getActivity().startActivity(intent);
+
+
+    }
     @OnClick(R.id.cv_about_award)
     void awardAuthor() {
         if (AlipayUtil.hasInstalledAlipayClient(mContext)) {

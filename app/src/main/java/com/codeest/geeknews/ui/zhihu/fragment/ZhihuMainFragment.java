@@ -24,7 +24,7 @@ public class ZhihuMainFragment extends SimpleFragment{
     @BindView(R.id.vp_zhihu_main)
     ViewPager mViewPager;
 
-    String[] tabTitle = new String[]{"日报","主题","专栏","热门"};
+    String[] tabTitle = new String[]{"日报","主题","专栏","热门","视频"};
     List<Fragment> fragments = new ArrayList<Fragment>();
 
     ZhihuMainAdapter mAdapter;
@@ -40,6 +40,7 @@ public class ZhihuMainFragment extends SimpleFragment{
         fragments.add(new ThemeFragment());
         fragments.add(new SectionFragment());
         fragments.add(new HotFragment());
+        fragments.add(new VideoFragment());
         mAdapter = new ZhihuMainAdapter(getChildFragmentManager(),fragments);
         mViewPager.setAdapter(mAdapter);
 
@@ -48,10 +49,12 @@ public class ZhihuMainFragment extends SimpleFragment{
         mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[1]));
         mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[2]));
         mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[3]));
+        mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[4]));
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.getTabAt(0).setText(tabTitle[0]);
         mTabLayout.getTabAt(1).setText(tabTitle[1]);
         mTabLayout.getTabAt(2).setText(tabTitle[2]);
         mTabLayout.getTabAt(3).setText(tabTitle[3]);
+        mTabLayout.getTabAt(4).setText(tabTitle[4]);
     }
 }
