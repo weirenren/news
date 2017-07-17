@@ -28,6 +28,11 @@
                 android:icon="@mipmap/ic_drawer_vtex"
                 android:checkable="true"
                 android:title="@string/vtex"/>
+            <item
+                android:id="@+id/drawer_browser"
+                android:icon="@mipmap/ic_drawer_vtex"
+                android:checkable="true"
+                android:title="@string/browser"/>
         </menu>
     </item>
     <item android:title="@string/drawer_group_options">

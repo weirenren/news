@@ -10,6 +10,7 @@ import com.codeest.geeknews.model.prefs.ImplPreferencesHelper;
 
 import javax.inject.Singleton;
 
+import acr.browser.lightning.AppComponentBase;
 import dagger.Component;
 
 /**
@@ -18,7 +19,7 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {AppModule.class, HttpModule.class})
-public interface AppComponent {
+public interface AppComponent extends AppComponentBase{
 
     App getContext();  // 提供App的Context
 

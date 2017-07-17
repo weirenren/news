@@ -137,6 +137,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                         showFragment = Constants.TYPE_VTEX;
                         mSearchMenuItem.setVisible(false);
                         break;
+                    case R.id.drawer_browser:
+                        showFragment = Constants.TYPE_BROWSER;
+                        mSearchMenuItem.setVisible(false);
                     case R.id.drawer_setting:
                         showFragment = Constants.TYPE_SETTING;
                         mSearchMenuItem.setVisible(false);
@@ -265,6 +268,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 return R.id.drawer_setting;
             case Constants.TYPE_ABOUT:
                 return R.id.drawer_about;
+            case Constants.TYPE_BROWSER:
+                return R.id.drawer_browser;
         }
         return R.id.drawer_zhihu;
     }

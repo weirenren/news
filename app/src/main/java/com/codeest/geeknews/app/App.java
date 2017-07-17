@@ -3,6 +3,7 @@ package com.codeest.geeknews.app;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.provider.Browser;
 import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
@@ -11,13 +12,13 @@ import android.view.WindowManager;
 
 import com.codeest.geeknews.component.InitializeService;
 import com.codeest.geeknews.di.component.AppComponent;
-import com.codeest.geeknews.di.component.DaggerAppComponent;
 import com.codeest.geeknews.di.module.AppModule;
 import com.codeest.geeknews.di.module.HttpModule;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import acr.browser.lightning.BrowserApp;
 import io.realm.Realm;
 
 /**
@@ -47,6 +48,8 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         instance = this;
+
+        BrowserApp.setsAppComponent((acr.browser.lightning.di.AppComponent) appComponent);
 
         //初始化屏幕宽高
         getScreenSize();

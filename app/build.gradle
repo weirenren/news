@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -41,14 +42,13 @@ android {
     packagingOptions {
         exclude "lib/mips/librealm-jni.so"
         exclude "lib/x86/librealm-jni.so"
-        exclude "lib/x86_64/librealm-jni.so"
     }
 
     splits {
         abi {
             enable true
             reset()
-            include 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            include 'armeabi', 'armeabi-v7a'
             universalApk true
         }
     }
@@ -58,11 +58,12 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/tbs_sdk_thirdapp_v2.2.0.1096_36549_sharewithdownload_withoutGame_obfs_20160830_211645.jar')
     testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support:support-annotations:25.3.1'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
+//    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+//    androidTestCompile 'com.android.support.test:runner:0.5'
+//    androidTestCompile 'com.android.support.test:rules:0.5'
 
     compile project(':search')
+    compile project(':browser')
     //base
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["design"]
